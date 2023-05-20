@@ -1,0 +1,141 @@
+<app-header></app-header>
+
+<!--Registration Form -->
+<div class="back">
+
+  <form class="d-flex formsearch">
+    <input [(ngModel)]="searchcust" class="form-control inp me-2" type="search" placeholder="Search" aria-label="Search"
+      [ngModelOptions]="{standalone: true}">
+
+    <!-- <button class="btn btn-outline-light" type="submit">Search</button> -->
+  </form>
+
+  <div class="back-content">
+    <h2>Our Customers</h2>
+    <!-- Button trigger modal -->
+    <button *ngIf="hidecust" type="button" class="btn mod-btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add Customers
+    </button>
+    <button *ngIf="editcustshow" type="button" class="btn mod-btn " data-bs-toggle="modal"
+      data-bs-target="#exampleModal">
+      Edit Customers
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Customer Regsitration</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+              (click)="clearfield()"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="row">
+                <div class="col">
+                  <label for="fname" class="form-label">Customer Name:</label>
+                  <input type="text" [(ngModel)]="fname" class="form-control" placeholder="Enter first name"
+                    name="fname">
+                </div>
+                <div class="col">
+                  <input type="text" [(ngModel)]="lname" class="form-control" placeholder="Enter last name" name="lname"
+                    style="margin-top: 32px;">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <label for="email" class="form-label mt-3">Email:</label>
+                  <input type="email" [(ngModel)]="email" class="form-control" placeholder="Enter email" name="email">
+                </div>
+                <div class="col">
+                  <label for="fname" class="form-label mt-3">Password:</label>
+                  <input type="password" [(ngModel)]="password" class="form-control" placeholder="Enter password"
+                    name="pswd">
+                </div>
+              </div>
+
+              <div class="row">
+
+                <div class="col">
+                  <label for="fname" class="form-label mt-3">Mobile:</label>
+                  <input type="tel" [(ngModel)]="mobile" class="form-control" placeholder="Enter phone" name="phone">
+                </div>
+
+                <div class="col">
+                  <label for="birthday" class="form-label mt-3">Birthday:</label>
+                  <input type="date" [(ngModel)]="dob" id="birthday" class="form-control" name="birthday">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <label for="city" class="form-label mt-3">City:</label>
+                  <input type="text" [(ngModel)]="city" class="form-control" placeholder="Enter City" name="city">
+                </div>
+                <div class="col">
+                  <label for="state" class="form-label mt-3">country:</label>
+                  <input type="text" [(ngModel)]="country" class="form-control" placeholder="Enter state" name="state">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <label for="address" class="form-label mt-3">Street Address:</label>
+                  <input class="form-control" type="text" [(ngModel)]="address" placeholder="Enter your address"
+                    name="address">
+                </div>
+
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" *ngIf="hideregister" [disabled]="email == '' || password == ''" (click)="register();"
+              class="btn btn1 btn-primary" data-bs-dismiss="modal">Register</button>
+            <button type="button" (click)="update();" *ngIf="editcustshow" class="btn btn2 btn-success">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- table -->
+
+<table class="table">
+  <thead class="table-danger">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Mobile</th>
+      <th>DOB</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Address</th>
+      <th>Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of custregister | filter:searchcust ; let i = index">
+      <td>{{data.fname}}</td>
+      <td>{{data.lname}}</td>
+      <td>{{data.email}}</td>
+      <td>{{data.password}}</td>
+      <td>{{data.mobile}}</td>
+      <td>{{data.dob}}</td>
+      <td>{{data.city}}</td>
+      <td>{{data.country}}</td>
+      <td>{{data.address}}</td>
+      <td><i class="fa fa-pencil-square-o" (click)="edit(i , data)" style="font-size:24px;cursor: pointer;"></i><i
+          style='font-size:24px;cursor: pointer;padding-left: 20px;color: red;' (click)="delete(i)"
+          class='fas'>&#xf2ed;</i></td>
+    </tr>
+  </tbody>
+</table>

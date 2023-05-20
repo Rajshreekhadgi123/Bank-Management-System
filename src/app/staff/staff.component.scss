@@ -1,0 +1,57 @@
+
+.back{
+    background: linear-gradient(90deg, rgba(119,99,173,1) 34%, rgba(158,223,41,0.9808298319327731) 100%);
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.back .formsearch{
+    padding-top: 30px;
+    width: 350px;
+    margin: 0 auto;
+}
+.back form .inp{
+    background-color: rgb(248, 238, 238);
+}
+.back .back-content{
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    left: 42%;
+    // transform: translate(-50%, -50%);
+    color: white;
+}
+
+.back .modal form{
+    padding: 10px;
+}
+.back .back-content h2{
+    font-size: 45px;
+    font-weight: 600;
+    color: rgb(238, 244, 248);
+}
+.back .mod-btn{
+    margin-top: 30px;
+    background-color: #fff;
+    color: black;
+    font-weight: 600;
+}
+.back .modal .modal-title{
+    color: black;
+    margin-left: 150px;
+}
+.back .modal .modal-body form label{
+    color: black;
+    font-weight: 600;
+    float: left;
+}
+.back .modal .modal-footer{
+    margin-right: 290px;
+}
+ table td{
+    height: 70px;
+    font-weight: 600;
+    padding-top: 20px;
+ }
